@@ -4,10 +4,6 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.time.LocalDateTime;
 
-enum SeatStatus {
-    AVAILABLE, HELD, SOLD
-}
-
 @Entity
 @Table(name = "seats")
 @Getter

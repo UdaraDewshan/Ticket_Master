@@ -1,4 +1,7 @@
 package edu.icet.repository;
 
-public interface SeatRepository {
+import edu.icet.model.entity.Seat;
+import org.springframework.data.jpa.repository.JpaRepository;
+
+public interface SeatRepository extends JpaRepository<Seat,Long> {
 }
