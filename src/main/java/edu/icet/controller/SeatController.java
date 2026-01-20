@@ -12,11 +12,13 @@ public class SeatController {
 
     private final SeatService seatService;
 
-    // POST /seats/{id}/hold?userId=U001
+    // Endpoint: POST http://localhost:8080/seats/1/hold?userId=U001
     @PostMapping("/{seatId}/hold")
-    public ResponseEntity<String> holdSeat(@PathVariable Long seatId, @RequestParam String userId) {
-
-        String result = seatService.holdSeat(seatId, userId);
-        return ResponseEntity.ok(result);
+    public ResponseEntity<String> holdSeat(
+            @PathVariable Long seatId,
+            @RequestParam String userId
+    )
+    {
+        return ResponseEntity.ok(seatService.holdSeat(seatId, userId));
     }
 }

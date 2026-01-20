@@ -6,6 +6,7 @@ import edu.icet.model.entity.SeatStatus; // අලුතින් හදපු E
 import edu.icet.model.entity.User;
 import edu.icet.repository.SeatRepository;
 import edu.icet.repository.UserRepository;
+import edu.icet.service.aop.AuditFailure;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,11 +20,11 @@ public class SeatService {
     private final UserRepository userRepository;
 
     @Transactional
+    @AuditFailure
     public String holdSeat(Long seatId, String userId) {
 
         Seat seat = seatRepository.findById(seatId)
                 .orElseThrow(() -> new RuntimeException("Seat not found"));
-
         User user = userRepository.findById(userId)
                 .orElseThrow(() -> new RuntimeException("User not found"));
 
